@@ -19,6 +19,9 @@ public class Main {
 		String plainText = VigenereCipher.decryption(content, key);
 		System.out.println(test.cipherTextString);
 		System.out.println(plainText);
+		double ic = VigenereCipher.calculateShiftedIndexOfCoincidence(content, 6);
+		System.out.println(ic);
+		
 
 	}
 
