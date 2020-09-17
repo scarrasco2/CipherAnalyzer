@@ -1,6 +1,11 @@
 package Main;
 
 public class ShiftCipher {
+	public static void segment(CipherText cipherText) {
+		
+		
+		
+	}
 	
 	// Cipher Text is UpperCase since the text files are in UpperCase
 	static String decipher(String cipherText, int key) {
