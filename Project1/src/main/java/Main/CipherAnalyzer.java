@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import ciphers.ShiftCipher;
+import ciphers.VigenereCipher;
 import options.UserOptions;
 
 public class CipherAnalyzer {
@@ -48,6 +49,7 @@ public class CipherAnalyzer {
 					break;
 
 				case VINGENERE_CIPHER:
+					VigenereCipher.run(scanner, cipherText);
 					break;
 
 				case EXIT:
