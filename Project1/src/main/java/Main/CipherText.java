@@ -4,9 +4,33 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class CipherText {
-	String cipherTextString;
-	HashMap<Character, Integer> freqencyAnalysis;
-	Double indexOfCoincidence;
+	public String cipherTextString;
+	public String getCipherTextString() {
+		return cipherTextString;
+	}
+
+	public HashMap<Character, Integer> getFreqencyAnalysis() {
+		return freqencyAnalysis;
+	}
+
+	public Double getIndexOfCoincidence() {
+		return indexOfCoincidence;
+	}
+
+	public void setCipherTextString(String cipherTextString) {
+		this.cipherTextString = cipherTextString;
+	}
+
+	public void setFreqencyAnalysis(HashMap<Character, Integer> freqencyAnalysis) {
+		this.freqencyAnalysis = freqencyAnalysis;
+	}
+
+	public void setIndexOfCoincidence(Double indexOfCoincidence) {
+		this.indexOfCoincidence = indexOfCoincidence;
+	}
+
+	public HashMap<Character, Integer> freqencyAnalysis;
+	public Double indexOfCoincidence;
 
 	public CipherText() {
 		cipherTextString = null;

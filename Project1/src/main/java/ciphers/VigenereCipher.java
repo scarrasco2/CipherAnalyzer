@@ -1,4 +1,6 @@
-package Main;
+package ciphers;
+
+import Main.CipherText;
 
 public class VigenereCipher {
 	static String generateKey(String str, String key) {

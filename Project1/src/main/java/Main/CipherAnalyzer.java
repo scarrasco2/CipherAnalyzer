@@ -4,9 +4,12 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import ciphers.ShiftCipher;
+import options.UserOptions;
+
 public class CipherAnalyzer {
 
-	public static void run(Scanner scanner) {
+	public static void run(Scanner scanner, CipherText cipherText) {
 		UserOptions userOptions;
 		int intOption;
 		boolean isDone = false;
@@ -24,18 +27,29 @@ public class CipherAnalyzer {
 
 				switch (userOptions) {
 				case FREQUENCY_ANALYSIS:
-
+					cipherText.calculateFrequnceyAnalysis();
+					System.out.println(cipherText.getFreqencyAnalysis());
 					break;
 
 				case INDEX_OF_COINCIDENCE:
+					cipherText.calculateIndexOfCoincidence();
+					System.out.printf("Index of Coincidence = %.4f \n", cipherText.getIndexOfCoincidence());
+					if (cipherText.getIndexOfCoincidence() < .063) {
+						System.out.println(
+								"Based on the index of coincidence the cipher used is more likey a polyalphabetic cipher");
+					} else {
+						System.out.println(
+								"Based on the index of coincidence the cipher used is more likey a monoalphabetic cipher");
+					}
 					break;
-					
+
 				case SHIFT_CIPHER:
+					ShiftCipher.run(scanner, cipherText);
 					break;
-				
+
 				case VINGENERE_CIPHER:
 					break;
-				
+
 				case EXIT:
 					System.out.println("GoodBye");
 					isDone = true;
@@ -56,7 +70,7 @@ public class CipherAnalyzer {
 				System.out.println("Please try again.");
 			}
 		}
-		
+
 	}
 
 }

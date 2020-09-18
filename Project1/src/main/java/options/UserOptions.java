@@ -1,4 +1,4 @@
-package Main;
+package options;
 
 public enum UserOptions {
 	FREQUENCY_ANALYSIS("Run frequency analysis of the cipher text."), 

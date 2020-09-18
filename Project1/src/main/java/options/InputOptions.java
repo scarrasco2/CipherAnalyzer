@@ -1,4 +1,4 @@
-package Main;
+package options;
 
 public enum InputOptions {
 	USER_INPUT("Input your own cipher text."),

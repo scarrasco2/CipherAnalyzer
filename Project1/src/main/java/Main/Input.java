@@ -11,6 +11,8 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import options.InputOptions;
+
 public class Input {
 	public static String run(Scanner scanner) throws IOException {
 		InputOptions inputOptions;
