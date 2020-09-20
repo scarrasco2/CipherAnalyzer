@@ -3,7 +3,6 @@ package ciphers;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
 import Main.CipherText;
 import options.VigenereCipherOptions;
 
@@ -21,7 +20,7 @@ public class VigenereCipher {
 	}
 
 	// Cipher Text is UpperCase since the text files are in UpperCase
-	static String decryption(String cipherText, String key) {
+	public static String decryption(String cipherText, String key) {
 		String plainText = "";
 
 		for (int i = 0; i < cipherText.length() && i < key.length(); i++) {

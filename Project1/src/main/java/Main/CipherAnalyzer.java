@@ -4,7 +4,9 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import ciphers.ColumnarTransposition;
 import ciphers.ShiftCipher;
+import ciphers.SubstitutionCipher;
 import ciphers.VigenereCipher;
 import options.UserOptions;
 
@@ -29,7 +31,7 @@ public class CipherAnalyzer {
 				switch (userOptions) {
 				case FREQUENCY_ANALYSIS:
 					cipherText.calculateFrequnceyAnalysis();
-					System.out.println(cipherText.getFreqencyAnalysis());
+					System.out.println(SubstitutionCipher.sortByValue(cipherText.getFreqencyAnalysis()).toString());
 					break;
 
 				case INDEX_OF_COINCIDENCE:
@@ -44,6 +46,14 @@ public class CipherAnalyzer {
 					}
 					break;
 
+				case COLUMNAR_TRANSPOSITION_CIPHER:
+					ColumnarTransposition.run(scanner, cipherText);
+					break;
+					
+				case SUBSTITUTION_CIPHER:
+					SubstitutionCipher.run(scanner, cipherText);
+					break;
+					
 				case SHIFT_CIPHER:
 					ShiftCipher.run(scanner, cipherText);
 					break;
