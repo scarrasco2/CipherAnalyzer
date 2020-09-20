@@ -36,6 +36,7 @@ public class SubstitutionCipher {
 
 	public static void run(Scanner scanner, CipherText cipherText) {
 		SubsitutionCipherOptions subsitutionCipherOptions;
+		String savedCipherText = cipherText.getCipherTextString();
 		int intOption;
 		boolean isDone = false;
 		while (!isDone) {
@@ -58,11 +59,11 @@ public class SubstitutionCipher {
 					frequencyAnalysis = cipherText.getFreqencyAnalysis();
 					System.out.println(sortByValue(frequencyAnalysis).toString());
 					break;
-					
+
 				case PRINT_CIPHER_TEXT:
 					System.out.println(cipherText.getCipherTextString());
 					break;
-					
+
 				case REPLACE_A_LETTER:
 					System.out.println("Enter the a letter you wish to replace:");
 					char oldLetter = scanner.next().toUpperCase().charAt(0);
@@ -73,6 +74,10 @@ public class SubstitutionCipher {
 					System.out.println(newCipherText);
 					cipherText.setCipherTextString(newCipherText);
 					break;
+
+				case RESET_CIPHER_TEXT:
+					cipherText.setCipherTextString(savedCipherText);
+					System.out.println("The cipher text has been restored");
 
 				case EXIT:
 					System.out.println("Exiting substitution cipher Analyzer");
