@@ -15,29 +15,25 @@ import Main.CipherText;
 import options.SubsitutionCipherOptions;
 
 public class SubstitutionCipher {
-	public static HashMap<Character, Integer> sortByValue(HashMap<Character, Integer> hm) 
-    { 
-        // Create a list from elements of HashMap 
-        List<Map.Entry<Character, Integer> > list = 
-               new LinkedList<Map.Entry<Character, Integer> >(hm.entrySet()); 
-  
-        // Sort the list 
-        Collections.sort(list, new Comparator<Map.Entry<Character, Integer> >() { 
-            public int compare(Map.Entry<Character, Integer> o1,  
-                               Map.Entry<Character, Integer> o2) 
-            { 
-                return (o2.getValue()).compareTo(o1.getValue()); 
-            } 
-        }); 
-          
-        // put data from sorted list to hashmap  
-        HashMap<Character, Integer> temp = new LinkedHashMap<Character, Integer>(); 
-        for (Map.Entry<Character, Integer> aa : list) { 
-            temp.put(aa.getKey(), aa.getValue()); 
-        } 
-        return temp; 
-    }
-	
+	public static HashMap<Character, Integer> sortByValue(HashMap<Character, Integer> hm) {
+		// Create a list from elements of HashMap
+		List<Map.Entry<Character, Integer>> list = new LinkedList<Map.Entry<Character, Integer>>(hm.entrySet());
+
+		// Sort the list
+		Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
+			public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+				return (o2.getValue()).compareTo(o1.getValue());
+			}
+		});
+
+		// put data from sorted list to hashmap
+		HashMap<Character, Integer> temp = new LinkedHashMap<Character, Integer>();
+		for (Map.Entry<Character, Integer> aa : list) {
+			temp.put(aa.getKey(), aa.getValue());
+		}
+		return temp;
+	}
+
 	public static void run(Scanner scanner, CipherText cipherText) {
 		SubsitutionCipherOptions subsitutionCipherOptions;
 		int intOption;
@@ -55,12 +51,27 @@ public class SubstitutionCipher {
 				subsitutionCipherOptions = SubsitutionCipherOptions.values()[intOption - 1];
 
 				switch (subsitutionCipherOptions) {
-				
+
 				case SORTED_FREQUENCY_ANALYSIS:
-					HashMap<Character,Integer> frequencyAnalysis = new HashMap<Character, Integer>();
+					HashMap<Character, Integer> frequencyAnalysis = new HashMap<Character, Integer>();
 					cipherText.calculateFrequnceyAnalysis();
 					frequencyAnalysis = cipherText.getFreqencyAnalysis();
 					System.out.println(sortByValue(frequencyAnalysis).toString());
+					break;
+					
+				case PRINT_CIPHER_TEXT:
+					System.out.println(cipherText.getCipherTextString());
+					break;
+					
+				case REPLACE_A_LETTER:
+					System.out.println("Enter the a letter you wish to replace:");
+					char oldLetter = scanner.next().toUpperCase().charAt(0);
+					System.out.println("Enter the replacement letter");
+					char newLetter = scanner.next().toLowerCase().charAt(0);
+					String newCipherText = cipherText.cipherTextString.replace(oldLetter, newLetter);
+					System.out.println("The new cipher text is the following:");
+					System.out.println(newCipherText);
+					cipherText.setCipherTextString(newCipherText);
 					break;
 
 				case EXIT:
@@ -85,7 +96,5 @@ public class SubstitutionCipher {
 		}
 
 	}
-	
-	
 
 }

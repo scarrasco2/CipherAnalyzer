@@ -2,6 +2,8 @@ package options;
 
 public enum SubsitutionCipherOptions {
 	SORTED_FREQUENCY_ANALYSIS("Run sorted frequency analysis of the cipher text."),
+	REPLACE_A_LETTER("Replace a ciphertext letter to a plaintext letter"),
+	PRINT_CIPHER_TEXT("Print out the cipher text"),
 	EXIT("Leave program");
 
 	private String description;

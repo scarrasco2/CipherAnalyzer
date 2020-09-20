@@ -67,9 +67,11 @@ public class VigenereCipher {
 
 				switch (vigenereCipherOptions) {
 				case FIND_KEY_Length:
-					for(int i = 0; i < 10; i++) {
+					System.out.println("Estimate the maxmimum length of the key below:");
+					int maxKeyLength = scanner.nextInt();
+					for(int i = 0; i < maxKeyLength; i++) {
 						if(calculateShiftedIndexOfCoincidence(cipherText.cipherTextString, i) > .060) {
-							System.out.println("The key mostly has a length of " + i);
+							System.out.println("The key mostly likely has a length of " + i);
 						}
 					}
 					break;
