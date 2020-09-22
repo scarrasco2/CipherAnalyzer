@@ -2,7 +2,6 @@ package Main;
 
 import java.awt.FileDialog;
 import java.awt.Frame;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -45,7 +44,6 @@ public class Input {
 					dialog.setMode(FileDialog.LOAD);
 					dialog.setVisible(true);
 					String path = dialog.getDirectory() + dialog.getFile();
-					System.out.println(path);
 					input = Files.readString(Paths.get("" + path), StandardCharsets.US_ASCII);
 					isDone = true;
 					break;
