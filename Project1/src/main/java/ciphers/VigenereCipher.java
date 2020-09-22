@@ -75,7 +75,7 @@ public class VigenereCipher {
 						}
 					}
 					break;
-
+					
 				case DECRYPT_WITH_A_KEY:
 					System.out.println("Input a key value below:");
 					String input = scanner.nextLine();
@@ -84,7 +84,20 @@ public class VigenereCipher {
 					System.out.println("Decrypting with the key value of " + input + " gives:");
 					System.out.println(plainText);
 					break;
-
+					
+				case BREAK_TEXT_INTO_GROUPS:
+					System.out.println("What is the key length?");
+					int numberOfGroups = scanner.nextInt();
+					for (int i = 0; i < numberOfGroups; i++) {
+						String shiftedCipherTextString = "";
+						for (int j = i; j < cipherText.cipherTextString.length(); j += numberOfGroups) {
+							shiftedCipherTextString = shiftedCipherTextString + cipherText.cipherTextString.charAt(j);
+						}
+						System.out.println("Group " + i);
+						System.out.println(shiftedCipherTextString);
+					}
+					break;
+					
 				case EXIT:
 					System.out.println("Exiting Vigenere Cipher Analyzer");
 					isDone = true;
