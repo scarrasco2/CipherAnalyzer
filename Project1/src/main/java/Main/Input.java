@@ -44,8 +44,9 @@ public class Input {
 					FileDialog dialog = new FileDialog((Frame) null, "Select File to Open");
 					dialog.setMode(FileDialog.LOAD);
 					dialog.setVisible(true);
-					String path = new File(dialog.getFile()).getPath();
-					input = Files.readString(Paths.get("src\\main\\resources\\" + path), StandardCharsets.US_ASCII);
+					String path = dialog.getDirectory() + dialog.getFile();
+					System.out.println(path);
+					input = Files.readString(Paths.get("" + path), StandardCharsets.US_ASCII);
 					isDone = true;
 					break;
 
