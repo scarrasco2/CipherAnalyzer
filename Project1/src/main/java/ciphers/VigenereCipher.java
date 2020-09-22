@@ -7,6 +7,41 @@ import Main.CipherText;
 import options.VigenereCipherOptions;
 
 public class VigenereCipher {
+	
+	public double[] englishFrequency;
+	
+	public VigenereCipher(){
+		englishFrequency = new double[25];
+		englishFrequency[0] = .082;
+		englishFrequency[1] = .015;
+		englishFrequency[2] = .028;
+		englishFrequency[3] = .043;
+		englishFrequency[4] = .13;
+		englishFrequency[5] = .022;
+		englishFrequency[6] = .02;
+		englishFrequency[7] = .061;
+		englishFrequency[8] = .07;
+		englishFrequency[9] = .0015;
+		englishFrequency[10] = .0077;
+		englishFrequency[11] = .04;
+		englishFrequency[12] = .024;
+		englishFrequency[13] = .067;
+		englishFrequency[14] = .075;
+		englishFrequency[15] = .019;
+		englishFrequency[16] = .00095;
+		englishFrequency[17] = .06;
+		englishFrequency[18] = .063;
+		englishFrequency[19] = .091;
+		englishFrequency[20] = .028;
+		englishFrequency[21] = .0098;
+		englishFrequency[22] = .024;
+		englishFrequency[23] = .0015;
+		englishFrequency[24] = .02;
+		englishFrequency[25] = .00074;
+		
+	}
+	
+	
 	static String generateKey(String str, String key) {
 		int letter = str.length();
 		for (int i = 0;; i++) {
@@ -97,7 +132,66 @@ public class VigenereCipher {
 						System.out.println(shiftedCipherTextString);
 					}
 					break;
+				
+				case FIND_KEY:
+					System.out.println("Enter the key length below:");
+					int keyLength = scanner.nextInt();
+					for (int i = 0; i < keyLength; i++) {
+						String shiftedCipherTextString = "";
+						for (int j = i; j < cipherText.cipherTextString.length(); j += keyLength) {
+							shiftedCipherTextString = shiftedCipherTextString + cipherText.cipherTextString.charAt(j);
+						}
+						for (int k = 0; k < 26; k++) {
+							String shifted = ShiftCipher.decipher(shiftedCipherTextString, k);
+							double sum = 0;
+							double value = 0;
+							int[] freqs = new int[26];
+							for (int m = 0; m < shifted.length(); m++) {
+								if (shifted.charAt(m) >= 'a' && shifted.charAt(m) <= 'z') {
+									freqs[shifted.charAt(m) - 'a']++;
+									sum++;
+								}
+								
+							}
+							
+							double[] englishFrequency = new double[26];
+							englishFrequency[0] = .082;
+							englishFrequency[1] = .015;
+							englishFrequency[2] = .028;
+							englishFrequency[3] = .043;
+							englishFrequency[4] = .13;
+							englishFrequency[5] = .022;
+							englishFrequency[6] = .02;
+							englishFrequency[7] = .061;
+							englishFrequency[8] = .07;
+							englishFrequency[9] = .0015;
+							englishFrequency[10] = .0077;
+							englishFrequency[11] = .04;
+							englishFrequency[12] = .024;
+							englishFrequency[13] = .067;
+							englishFrequency[14] = .075;
+							englishFrequency[15] = .019;
+							englishFrequency[16] = .00095;
+							englishFrequency[17] = .06;
+							englishFrequency[18] = .063;
+							englishFrequency[19] = .091;
+							englishFrequency[20] = .028;
+							englishFrequency[21] = .0098;
+							englishFrequency[22] = .024;
+							englishFrequency[23] = .0015;
+							englishFrequency[24] = .02;
+							englishFrequency[25] = .00074;
+							System.out.printf(" %c = ", (k+97));
+							for(int t = 0; t < 26; t++) {
+								value = value + (freqs[t] /sum)*englishFrequency[t];
+							}
+							System.out.printf(" %f ", value);
+						}
+						System.out.println("Position = " + i );
+					}
 					
+					break;
+						
 				case EXIT:
 					System.out.println("Exiting Vigenere Cipher Analyzer");
 					isDone = true;

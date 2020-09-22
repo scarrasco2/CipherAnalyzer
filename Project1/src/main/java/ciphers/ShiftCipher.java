@@ -101,5 +101,16 @@ public class ShiftCipher {
 		}
 		return plaintext;
 	}
+	
+	static String encode(String cipherText, int key) {
+		cipherText = cipherText.toLowerCase();
+		String plaintext = "";
+		for (int i = 0; i < cipherText.length(); i++) {
+			char shiftedLetter = (char) (((int) cipherText.charAt(i) +  key - 97) % 26 + 97);
+			plaintext = plaintext + shiftedLetter;
+		}
+		return plaintext;
+	}
+
 
 }
